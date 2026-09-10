@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Launch at Login helper (PRD §33). Install with:
+     cp packaging/com.qya.notification-forwarder.plist ~/Library/LaunchAgents/
+     launchctl load ~/Library/LaunchAgents/com.qya.notification-forwarder.plist
+     (Phase 5 will replace this with SMAppService registration inside the .app.) -->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.qya.notification-forwarder</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Applications/NotificationForwarder.app/Contents/MacOS/notification-forwarder</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/notification-forwarder.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/notification-forwarder.err.log</string>
+</dict>
+</plist>

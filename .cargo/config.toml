@@ -1,0 +1,9 @@
+# macOS-only linker fix: `axuielement`'s build script emits `-L` paths for the
+# full-Xcode layout (`.../XcodeDefault.xctoolchain/usr/lib/swift/macosx`).
+# On machines with only the Command Line Tools, the Swift compatibility
+# archives live at `/Library/Developer/CommandLineTools/usr/lib/swift/macosx`
+# instead, and linking fails with:
+#   ld: Could not find or use auto-linked library 'swiftCompatibility56' …
+# The extra search path is harmless on full-Xcode machines.
+[target.aarch64-apple-darwin]
+rustflags = ["-L", "native=/Library/Developer/CommandLineTools/usr/lib/swift/macosx"]

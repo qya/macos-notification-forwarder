@@ -1,0 +1,11 @@
+[package]
+name = "nf-accessibility"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axuielement = { workspace = true }
+futures-util = { workspace = true }
+nf-notification = { path = "../notification" }
+tokio = { workspace = true }
+tracing = { workspace = true }

@@ -1,0 +1,11 @@
+[package]
+name = "nf-notification"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = { workspace = true }
+nf-config = { path = "../config" }
+serde = { workspace = true }
+serde_json = { workspace = true }
+sha2 = { workspace = true }

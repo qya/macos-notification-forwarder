@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Phase 5 packaging (PRD §§20–21, 33, 39). Bundle layout:
+     NotificationForwarder.app/Contents/{Info.plist,MacOS/notification-forwarder,Resources/icon.icns}
+     LSUIElement=true keeps the app as a menu-bar agent (no Dock icon). -->
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>NotificationForwarder</string>
+    <key>CFBundleDisplayName</key>
+    <string>Notification Forwarder</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.qya.notification-forwarder</string>
+    <key>CFBundleVersion</key>
+    <string>0.1.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>0.1.0</string>
+    <key>CFBundleExecutable</key>
+    <string>notification-forwarder</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>LSUIElement</key>
+    <true/>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>CFBundleIconFile</key>
+    <string>icon</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>Notification Forwarder reads Notification Center banners via the Accessibility API to forward them to your webhook.</string>
+</dict>
+</plist>

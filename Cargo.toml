@@ -1,0 +1,24 @@
+[workspace]
+members = [
+    "crates/config",
+    "crates/notification",
+    "crates/accessibility",
+    "crates/webhook",
+    "crates/app",
+]
+resolver = "2"
+
+# Pinned toolchain-era versions for reproducible production builds.
+# GPUI is pre-1.0 per PRD §5, so crates/app pins the exact version
+# (gpui = "=0.2.2") behind the optional `gpui-ui` feature.
+[workspace.dependencies]
+axuielement = { version = "0.9", features = ["async"] }
+chrono = { version = "0.4", features = ["serde", "clock"] }
+futures-util = "0.3"
+reqwest = { version = "0.12", features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+tokio = { version = "1", features = ["macros", "rt", "rt-multi-thread", "time", "sync"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
