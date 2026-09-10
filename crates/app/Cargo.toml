@@ -25,8 +25,8 @@ tokio = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 
-# GPUI is pre-1.0 (PRD §5) and stays a thin, optional presentation layer
-# (PRD §38). Pinned exactly; off by default so `cargo build` stays fast and
+# GPUI is pre-1.0 () and stays a thin, optional presentation layer
+# (). Pinned exactly; off by default so `cargo build` stays fast and
 # the notification engine can be verified without compiling a GPU UI stack.
 gpui = { version = "=0.2.2", optional = true }
 

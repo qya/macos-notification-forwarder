@@ -9,7 +9,7 @@ members = [
 resolver = "2"
 
 # Pinned toolchain-era versions for reproducible production builds.
-# GPUI is pre-1.0 per PRD §5, so crates/app pins the exact version
+# GPUI is pre-1.0 per , so crates/app pins the exact version
 # (gpui = "=0.2.2") behind the optional `gpui-ui` feature.
 [workspace.dependencies]
 axuielement = { version = "0.9", features = ["async"] }

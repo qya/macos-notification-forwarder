@@ -1,4 +1,4 @@
-//! Application filtering (PRD §16, AT-08).
+//! Application filtering (, AT-08).
 //!
 //! ```text
 //! WhatsApp → forwarded
@@ -36,7 +36,7 @@ impl AppFilter {
         }
     }
 
-    /// Filtering happens before webhook dispatch (PRD §16).
+    /// Filtering happens before webhook dispatch ().
     pub fn allows(&self, app_name: &str) -> bool {
         match self.mode {
             FilterMode::All => true,

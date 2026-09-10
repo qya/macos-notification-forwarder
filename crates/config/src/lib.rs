@@ -1,4 +1,4 @@
-//! Local configuration file handling (PRD §5, §22, §32).
+//! Local configuration file handling ().
 //!
 //! Config lives at:
 //! `~/Library/Application Support/NotificationForwarder/config.json`
@@ -11,7 +11,7 @@ use std::path::PathBuf;
 
 use serde::{Deserialize, Serialize};
 
-/// How application filtering behaves (PRD §16).
+/// How application filtering behaves ().
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
 #[serde(rename_all = "snake_case")]
 pub enum FilterMode {
@@ -25,7 +25,7 @@ pub enum FilterMode {
 /// Full application configuration.
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct AppConfig {
-    /// Destination webhook URL (POST JSON, PRD §17).
+    /// Destination webhook URL (POST JSON, ).
     #[serde(default)]
     pub webhook_url: String,
     /// Additional HTTP headers included with every webhook request.
@@ -39,7 +39,7 @@ pub struct AppConfig {
     /// Verbose AX logging (Settings → Enable diagnostic logging).
     #[serde(default)]
     pub diagnostic_logging: bool,
-    /// Launch at login (PRD §33). Best-effort; see README.
+    /// Launch at login (). Best-effort; see README.
     #[serde(default)]
     pub start_at_login: bool,
     /// Application filter mode.
@@ -48,16 +48,16 @@ pub struct AppConfig {
     /// Apps to forward when `filter_mode == Selected`.
     #[serde(default)]
     pub allowed_apps: HashSet<String>,
-    /// Deduplication TTL in seconds (PRD §15: 5–30 min).
+    /// Deduplication TTL in seconds (: 5–30 min).
     #[serde(default = "default_dedup_ttl_secs")]
     pub dedup_ttl_secs: u64,
-    /// Max dedup fingerprints retained (bounded cache, PRD §15).
+    /// Max dedup fingerprints retained (bounded cache, ).
     #[serde(default = "default_dedup_capacity")]
     pub dedup_capacity: usize,
-    /// Debounce between AX event and targeted scan, ms (PRD §30).
+    /// Debounce between AX event and targeted scan, ms ().
     #[serde(default = "default_debounce_ms")]
     pub debounce_ms: u64,
-    /// Max webhook attempts incl. the first try (PRD §19: 3).
+    /// Max webhook attempts incl. the first try (: 3).
     #[serde(default = "default_max_attempts")]
     pub max_attempts: u32,
 }
@@ -130,7 +130,7 @@ impl AppConfig {
         serde_json::from_slice(&bytes).unwrap_or_default()
     }
 
-    /// Persist to disk with `0o600` permissions (PRD §32).
+    /// Persist to disk with `0o600` permissions ().
     pub fn save(&self) -> std::io::Result<()> {
         self.save_to(&Self::config_path())
     }
@@ -152,7 +152,7 @@ impl AppConfig {
     }
 }
 
-/// Redact secrets from a URL for logging (PRD §32).
+/// Redact secrets from a URL for logging ().
 ///
 /// `https://api.example.com/webhook?token=abc` → `...?token=********`
 pub fn sanitize_url_for_logging(url: &str) -> String {

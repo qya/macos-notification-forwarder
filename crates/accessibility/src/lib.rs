@@ -1,4 +1,4 @@
-//! Accessibility engine (PRD §§8–13, 28).
+//! Accessibility engine ().
 //!
 //! Flow: permission check → Notification Center discovery → `AXUIElement` →
 //! `AXObserver` → debounced targeted scan → banner snapshots → processing

@@ -1,4 +1,4 @@
-//! Small AX attribute helpers + AX tree debugger (PRD §25).
+//! Small AX attribute helpers + AX tree debugger ().
 //!
 //! Every accessor is fallible-tolerant: Notification Center's AX structure
 //! differs between macOS versions, so a missing attribute is `None`, never a

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Build NotificationForwarder.app (PRD Phase 5, unsigned/ad-hoc signed).
+# Build NotificationForwarder.app (Phase 5, unsigned/ad-hoc signed).
 #
 # Usage: ./packaging/build-app.sh [--debug]
 # Output: ./dist/NotificationForwarder.app

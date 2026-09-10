@@ -1,4 +1,4 @@
-//! Banner parser (PRD §14).
+//! Banner parser ().
 //!
 //! Priority:
 //! 1. Structured AX children (ordered static texts)
@@ -169,7 +169,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn whatsapp_example_from_prd() {
+    fn whatsapp_example() {
         // AXNotificationCenterBanner
         // ├── title = "Niles 💟"
         // └── body  = "AAA"
@@ -217,15 +217,15 @@ mod tests {
         let fields = BannerFields {
             app_name_hint: Some("Notification Center".to_string()),
             static_texts: vec![
-                "DANA Bisnis".to_string(),
-                "Pembayaran Masuk".to_string(),
-                "Rp201 diterima DANA Bisnis.".to_string(),
+                "Booking".to_string(),
+                "Booking Confirmed".to_string(),
+                "Your booking has been confirmed by Booking.".to_string(),
             ],
             ..Default::default()
         };
         let n = parse_banner_fields(&fields).expect("parses");
-        assert_eq!(n.app_name, "DANA Bisnis");
-        assert_eq!(n.title, "Pembayaran Masuk");
+        assert_eq!(n.app_name, "Booking");
+        assert_eq!(n.title, "Booking Confirmed");
     }
 
     #[test]
@@ -233,27 +233,27 @@ mod tests {
         let fields = BannerFields {
             app_name_hint: Some("Notification Center".to_string()),
             static_texts: vec![
-                "Pembayaran Masuk".to_string(),
-                "Rp201 diterima DANA Bisnis.".to_string(),
+                "Booking Confirmed".to_string(),
+                "Your booking has been confirmed by Booking.".to_string(),
             ],
             ..Default::default()
         };
         let n = parse_banner_fields(&fields).expect("parses");
         assert_eq!(n.app_name, "Unknown");
-        assert_eq!(n.title, "Pembayaran Masuk");
+        assert_eq!(n.title, "Booking Confirmed");
     }
 
     #[test]
     fn extracts_app_from_notification_center_spoken_summary() {
         let fields = BannerFields {
-            app_name_hint: Some("\u{200e}WhatsApp, Niles 💟, Kacau".to_string()),
-            static_texts: vec!["Niles 💟".to_string(), "Kacau".to_string()],
+            app_name_hint: Some("\u{200e}WhatsApp, Niles 💟, Miss you".to_string()),
+            static_texts: vec!["Niles 💟".to_string(), "Miss you".to_string()],
             ..Default::default()
         };
         let n = parse_banner_fields(&fields).expect("parses");
         assert_eq!(n.app_name, "WhatsApp");
         assert_eq!(n.title, "Niles 💟");
-        assert_eq!(n.message, "Kacau");
+        assert_eq!(n.message, "Miss you");
     }
 
     #[test]

@@ -1,4 +1,4 @@
-//! Retry policy (PRD §19).
+//! Retry policy ().
 //!
 //! ```text
 //! Attempt 1 → 1s → Attempt 2 → 3s → Attempt 3   (max 3 attempts)
@@ -33,7 +33,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn attempts_match_prd() {
+    fn attempts_match_expected_policy() {
         assert_eq!(backoff_for_attempt(1), Duration::from_secs(0));
         assert_eq!(backoff_for_attempt(2), Duration::from_secs(1));
         assert_eq!(backoff_for_attempt(3), Duration::from_secs(3));

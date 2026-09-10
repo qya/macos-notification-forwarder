@@ -1,4 +1,4 @@
-//! Bounded async webhook dispatch queue (PRD §18).
+//! Bounded async webhook dispatch queue ().
 //!
 //! The notification engine pushes payloads without blocking on the network;
 //! a single background worker POSTs them with retry and records outcomes.

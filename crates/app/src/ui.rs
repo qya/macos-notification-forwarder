@@ -1,11 +1,11 @@
-//! GPUI presentation layer (PRD §§20–25).
+//! GPUI presentation layer ().
 //!
-//! Per PRD §38, GPUI stays a **thin layer over the notification engine**:
+//! Per , GPUI stays a **thin layer over the notification engine**:
 //! the engine owns detection/parsing/dedup/webhook, and this module only
 //! mirrors a [`StatusSnapshot`] into native views.
 //!
 //! The real GPUI application compiles behind the `gpui-ui` feature
-//! (`gpui = "=0.2.2"`, pinned exactly per PRD §5). The default build stays
+//! (`gpui = "=0.2.2"`, pinned exactly per ). The default build stays
 //! headless so the engine (the actual technical risk) can be built, tested,
 //! and shipped without pulling the GPU UI stack.
 
@@ -28,7 +28,7 @@ pub struct StatusSnapshot {
 }
 
 impl StatusSnapshot {
-    /// Text rendering used by `--status` and logs (mirrors PRD §20 layout).
+    /// Text rendering used by `--status` and logs (mirrors  layout).
     pub fn render_text(&self) -> String {
         let mut out = String::new();
         out.push_str("Notification Forwarder\n");
@@ -55,7 +55,7 @@ impl StatusSnapshot {
         out
     }
 
-    /// Menu-bar text (PRD §21) for the tray tooltip / `--menu` output.
+    /// Menu-bar text () for the tray tooltip / `--menu` output.
     pub fn render_menu(&self) -> String {
         format!(
             "Notification Forwarder\n\n{} Monitoring\n\nNotifications: {}\nWebhook: {}\n\nOpen\nSettings\nLogs\n\nQuit\n",

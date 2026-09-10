@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<!-- Phase 5 packaging (PRD §§20–21, 33, 39). Bundle layout:
+<!-- Phase 5 packaging (). Bundle layout:
      NotificationForwarder.app/Contents/{Info.plist,MacOS/notification-forwarder,Resources/icon.icns}
      LSUIElement=true keeps the app as a menu-bar agent (no Dock icon). -->
 <plist version="1.0">

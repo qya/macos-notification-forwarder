@@ -1,5 +1,5 @@
 //! Notification processing pipeline: Parser → Filter → Dedup → Dispatcher
-//! (PRD §4, §§7, 14–16).
+//! (, –16).
 //!
 //! This crate is intentionally pure: it never touches the Accessibility API
 //! directly. The `nf-accessibility` crate extracts raw banner fields and hands

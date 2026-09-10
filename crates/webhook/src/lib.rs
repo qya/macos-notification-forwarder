@@ -1,5 +1,5 @@
 //! Webhook pipeline: Filter → Deduplication → Queue → HTTP POST → Retry
-//! (PRD §§17–19).
+//! ().
 
 pub mod client;
 pub mod queue;

@@ -1,4 +1,4 @@
-//! Internal notification model (PRD §7).
+//! Internal notification model ().
 
 use chrono::{DateTime, Local};
 use serde::{Deserialize, Serialize};
@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 pub struct Notification {
     /// AX-derived stable identifier, if the banner exposed one.
     /// `None` when Notification Center reused an element without an ID —
-    /// see PRD §12: identity is content-based, never ID-based alone.
+    /// see : identity is content-based, never ID-based alone.
     pub id: Option<String>,
     pub app_name: String,
     pub title: String,
@@ -37,7 +37,7 @@ impl Notification {
         self
     }
 
-    /// Content fingerprint per PRD §15:
+    /// Content fingerprint per :
     /// `SHA256(app_name + "\0" + title + "\0" + message)`.
     pub fn fingerprint(&self) -> String {
         crate::dedup::fingerprint(&self.app_name, &self.title, &self.message)
@@ -56,7 +56,7 @@ mod tests {
     }
 
     #[test]
-    fn example_from_prd() {
+    fn example_notification() {
         let n = Notification::new("WhatsApp", "Niles 💟", "AAA");
         assert_eq!(n.app_name, "WhatsApp");
         assert_eq!(n.title, "Niles 💟");

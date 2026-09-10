@@ -1,10 +1,10 @@
 //! macOS Notification Forwarder — application entry point.
 //!
-//! Lifecycle (PRD §29):
+//! Lifecycle ():
 //! ```text
 //! launch → load config → check Accessibility → find NC → AXObserver → monitoring
 //! ```
-//! Pipeline (PRD §18, §27):
+//! Pipeline ():
 //! ```text
 //! AX event → scan → parse → filter → dedup → queue → POST (+retry)
 //! ```
@@ -176,7 +176,7 @@ fn main() {
         return;
     }
 
-    // ── Accessibility gate (PRD §9, AT-01/AT-07) ──────────────────────
+    // ── Accessibility gate (, AT-01/AT-07) ──────────────────────
     // Headless/one-shot: print instructions and exit. GUI mode always
     // launches so the menu-bar icon and permission screen can appear.
     if !accessibility_trusted() {
@@ -466,7 +466,7 @@ async fn run_monitor(config: AppConfig, mut hooks: Option<GuiHooks>) {
                                         "notification detected"
                                     );
                                 } else {
-                                    // Privacy (PRD §31): bodies stay out of normal logs.
+                                    // Privacy (): bodies stay out of normal logs.
                                     info!(app = %notification.app_name, "notification detected");
                                 }
                                 Engine::gui_log(

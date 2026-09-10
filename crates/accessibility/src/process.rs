@@ -1,4 +1,4 @@
-//! Notification Center process discovery (PRD §10).
+//! Notification Center process discovery ().
 //!
 //! Never hardcode a PID: it changes whenever macOS restarts the process.
 //! Discovery tolerates macOS version differences by trying several process
@@ -74,7 +74,7 @@ fn find_pid_in_ps_output(output: &str) -> Option<i32> {
 }
 
 /// Block until Notification Center appears, polling with backoff.
-/// Used by the reconnect loop (PRD §28).
+/// Used by the reconnect loop ().
 pub async fn wait_for_notification_center() -> i32 {
     let mut delay_ms = 500;
     loop {

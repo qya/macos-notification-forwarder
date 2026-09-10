@@ -1,4 +1,4 @@
-//! Banner scanner (PRD §13).
+//! Banner scanner ().
 //!
 //! Primary signal: `AXSubrole == AXNotificationCenterBanner`.
 //! The scanner never relies on that signal exclusively: it also accepts
@@ -14,7 +14,7 @@ use crate::element::{collect_texts, get_string};
 #[derive(Debug, Clone)]
 pub struct BannerSnapshot {
     /// `AXIdentifier`, when exposed. May repeat across scans — identity is
-    /// content-based (PRD §12), this is only a hint for debugging.
+    /// content-based (), this is only a hint for debugging.
     pub ax_id: Option<String>,
     /// Best-effort owning-app guess from surrounding chrome.
     pub app_name_hint: Option<String>,
@@ -133,7 +133,7 @@ mod tests {
     fn rejects_system_container_as_app_hint() {
         assert!(is_generic_app_hint("Notification Center"));
         assert!(is_generic_app_hint("NotificationCenter"));
-        assert!(!is_generic_app_hint("DANA Bisnis"));
+        assert!(!is_generic_app_hint("Booking"));
         assert!(!is_generic_app_hint("Jago"));
     }
 }

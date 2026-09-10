@@ -68,7 +68,7 @@ iPhone / macOS App ──► macOS Notification Center ──► AXObserver (Eve
 - **Pure Native Agent**: Configured with `LSUIElement = true`—runs unobtrusively in the menu bar without cluttering the Dock or window switcher.
 
 ### 📱 Full iPhone Mirroring & Mobile Alert Support
-- Automatically detects notifications mirrored from your iPhone (e.g. WhatsApp, Messages, banking applications like DANA Bisnis, Telegram, Slack).
+- Automatically detects notifications mirrored from your iPhone (e.g. WhatsApp, Messages, banking applications like Booking, Telegram, Slack).
 - **Sanitization & Extraction**:
   - Strips invisible Unicode bidirectional formatting marks (`\u{200e}`, `\u{200f}`, etc.).
   - Decodes spoken VoiceOver/AX summaries (e.g. `\u{200e}WhatsApp, Niles 💟, Message`).
@@ -248,7 +248,7 @@ The configuration file is stored locally with secure `0o600` permissions (readab
     "WhatsApp",
     "Messages",
     "Slack",
-    "DANA Bisnis"
+    "Booking"
   ],
   "dedup_ttl_secs": 900,
   "dedup_capacity": 2000,
@@ -353,8 +353,8 @@ cargo run --features gpui-ui
 | ID | Criterion | Verification & Implementation |
 |---|---|---|
 | **AT-01** | Accessibility permission granted transitions to active monitoring | `crates/app/src/main.rs` (`wait_until_trusted`), `nf_accessibility::accessibility_trusted` |
-| **AT-02** | Structured banner parsing (e.g. WhatsApp `Niles 💟` / `AAA`) | `crates/notification/src/parser.rs` (`parser::tests::whatsapp_example_from_prd`) |
-| **AT-03** | Repeated banners within TTL window yield only one webhook dispatch | `crates/notification/src/dedup.rs` (`dedup::tests::duplicate_sequence_from_prd`) |
+| **AT-02** | Structured banner parsing (e.g. WhatsApp `Niles 💟` / `AAA`) | `crates/notification/src/parser.rs` (`parser::tests::whatsapp_example`) |
+| **AT-03** | Repeated banners within TTL window yield only one webhook dispatch | `crates/notification/src/dedup.rs` (`dedup::tests::duplicate_sequence`) |
 | **AT-04** | Updated banner content (`AAA → BBB`) re-fires webhook | `crates/notification/src/dedup.rs` (content SHA-256 fingerprinting) |
 | **AT-05** | Structured JSON payload delivered via HTTP POST | `crates/webhook/src/client.rs` (`WebhookPayload`, `WebhookClient::send`) |
 | **AT-06** | Notification Center crash/restart automatically rediscovers PID & reconnects | `crates/accessibility/src/observer.rs` (`ObserverEngine::run` recovery loop) |

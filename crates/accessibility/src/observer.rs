@@ -1,4 +1,4 @@
-//! `AXObserver` engine (PRD §§11, 28, 30).
+//! `AXObserver` engine ().
 //!
 //! Preferred flow:
 //! ```text
@@ -29,7 +29,7 @@ use crate::scanner::{scan_for_banners, BannerSnapshot};
 pub enum MonitorEvent {
     /// A scan completed; carries whatever banners are currently visible.
     /// The pipeline diffs content fingerprints, so re-emitting visible
-    /// banners is safe (PRD §12).
+    /// banners is safe ().
     Banners(Vec<BannerSnapshot>),
     /// Notification Center PID changed (restart detected + reconnected).
     Reconnected { pid: i32 },
@@ -38,7 +38,7 @@ pub enum MonitorEvent {
 }
 
 /// AX notifications worth subscribing to. The exact set is validated per
-/// macOS version (PRD §11); all are best-effort — a rejected registration
+/// macOS version (); all are best-effort — a rejected registration
 /// logs a warning and monitoring continues with the rest.
 const SUBSCRIPTIONS: &[&str] = &[
     AX_CREATED_NOTIFICATION,
@@ -125,7 +125,7 @@ impl ObserverEngine {
         self.scan_and_emit(&app, tx).await;
 
         let stream = stream;
-        // Debounce: collapse bursts of AX events into one scan (PRD §30).
+        // Debounce: collapse bursts of AX events into one scan ().
         loop {
             // Wait for the next event, then drain + debounce. The stream
             // yields `AXObserverEvent` directly (`None` = closed).

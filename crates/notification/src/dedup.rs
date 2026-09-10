@@ -1,6 +1,6 @@
-//! Deduplication (PRD §15, AT-03, AT-04).
+//! Deduplication (, AT-03, AT-04).
 //!
-//! Key insight (PRD §12): Notification Center may **reuse** an AX element and
+//! Key insight (): Notification Center may **reuse** an AX element and
 //! update its contents, so identity must be content-based:
 //!
 //! ```text
@@ -93,7 +93,7 @@ mod tests {
     use super::*;
 
     #[test]
-    fn duplicate_sequence_from_prd() {
+    fn duplicate_sequence() {
         let mut cache = DedupCache::new(Duration::from_secs(900), 100);
         // ID: ABC — AAA → send, AAA → ignore, BBB → send, CCC → send.
         assert!(!cache.is_duplicate(&fingerprint("WhatsApp", "Niles", "AAA")));

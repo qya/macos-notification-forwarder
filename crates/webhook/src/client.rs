@@ -1,4 +1,4 @@
-//! Webhook HTTP client (PRD §17).
+//! Webhook HTTP client ().
 //!
 //! ```http
 //! POST /api/v1/external/hammerspoon
@@ -65,7 +65,7 @@ impl std::fmt::Display for WebhookError {
 
 impl std::error::Error for WebhookError {}
 
-/// Thin wrapper over `reqwest` with PRD §19 retry semantics.
+/// Thin wrapper over `reqwest` with  retry semantics.
 #[derive(Debug, Clone)]
 pub struct WebhookClient {
     url: String,
